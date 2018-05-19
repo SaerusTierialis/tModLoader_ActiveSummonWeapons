@@ -1,0 +1,28 @@
+WORK IN PROGRESS!!!
+
+This mod will eventually contain several active weapons that scale with the minion damage stat.
+
+At the moment, there is just one weapon crafted at a workbench with 10 wood and 1 gel.
+
+v1.0.5
+-Bubble Wand now scales uniquely with minion damage stat to be relevant at any stage of progression
+*Bubbles will eventually be switched into something more fitting for a minion caster
+
+v1.0.4
+-fixed multiplayer bug (bubbles appeared to fly off screen on other clients)
+-bubbles now pop after hitting just once
+-bubbles are now visually smaller, hit box is now correct
+-bubble wand mana cost decreased, cast speed increased
+-bubble wand recipe is now 10 wood and 1 gel at a workbench
+
+v1.0.3
+-Renamed items/projectile, new graphic 
+
+v1.0.2
+-Updated for tModLoader v0.10.1.3
+
+v1.0.1
+-Updated for tModLoader v0.10.1
+
+v1.0.0
+-initial upload
