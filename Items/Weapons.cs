@@ -14,8 +14,8 @@ namespace ActiveSummonWeapons.Items
 
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bubble Wand");
-			Tooltip.SetDefault("Feel the bubbles!\nDamage and cast speed scale uniquely with summon damage.\n(Damage updates when held)");
+			DisplayName.SetDefault("Spirit Wand");
+			Tooltip.SetDefault("Summons spirits that travel to the targeted location!\nDamage and cast speed scale uniquely with summon damage.\n(Damage updates when held)");
 			Item.staff[item.type] = true;
 		}
 		public override void SetDefaults()
@@ -34,7 +34,7 @@ namespace ActiveSummonWeapons.Items
 			item.rare = 2;
 			item.UseSound = SoundID.Item20;
 			item.autoReuse = true;
-            item.shoot = mod.ProjectileType("BubbleProj");
+            item.shoot = mod.ProjectileType<Projectiles.SpiritProj>();
             item.shootSpeed = 5f;
 		}
 
@@ -48,14 +48,16 @@ namespace ActiveSummonWeapons.Items
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
+            if (player.direction > 0)
+                position = player.Right;
+            else
+                position = player.Left;
+
             Vector2 vel = new Vector2(speedX, speedY);
             Vector2 target = Main.MouseWorld;
             int id = Projectile.NewProjectile(position, vel, type, damage, knockBack, player.whoAmI, target.X, target.Y);
 
-            //(Main.projectile[id].modProjectile as Projectiles.HomingProjPosition).target = Main.MouseWorld; 
-            //Main.MouseWorld
-
-            return false;
+            return false; //prevent default
         }
 
         public override void AddRecipes()

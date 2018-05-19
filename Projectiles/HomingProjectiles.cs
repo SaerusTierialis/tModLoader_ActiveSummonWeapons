@@ -5,12 +5,20 @@ using Terraria.ModLoader;
 
 namespace ActiveSummonWeapons.Projectiles
 {
-	public class BubbleProj : HomingProjPosition
+	public class SpiritProj : HomingProjPosition
     {
-		public override void SetStaticDefaults()
+        public override string Texture
+        {
+            get
+            {
+                return mod.Name + "/Projectiles/Placeholder";
+            }
+        }
+
+        public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bubble Projectile");
-            ProjectileID.Sets.Homing[projectile.type] = true;
+			DisplayName.SetDefault("Summoned Spirit");
+            //ProjectileID.Sets.Homing[projectile.type] = true;
         }
 
 		public override void SetDefaults()
@@ -22,6 +30,13 @@ namespace ActiveSummonWeapons.Projectiles
             projectile.friendly = true;
 			projectile.ignoreWater = true;
             projectile.tileCollide = true;
+        }
+
+        public override void AI()
+        {
+            int i = Dust.NewDust(projectile.Center, 0, 0, DustID.WitherLightning, 0, 0, 0, Color.Purple);
+            Main.dust[i].noGravity = true;
+            base.AI();
         }
     }
 
